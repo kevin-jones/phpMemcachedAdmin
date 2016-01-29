@@ -15,7 +15,7 @@ So we added live charts that stream memcached stats onto a everlasting, smooth H
 
 Example chart showing some memcached stats:
 
-[[https://github.com/kevin-jones/phpMemcachedAdmin/blob/master/Public/Images/chart1.png|alt=memcached stats chart]]
+[[https://raw.githubusercontent.com/kevin-jones/phpMemcachedAdmin/master/Public/Images/chart1.png]]
 
 ## Credits
 
