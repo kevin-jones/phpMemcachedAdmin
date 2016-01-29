@@ -74,29 +74,45 @@ Global hit percent on this server : get_hits / (get_hits + get_misses)
     var page = 'stats.php?request_command=live_stats&cluster=<?php echo $cluster; ?>';
     setTimeout("ajax(page,'stats')", <?php echo (5 + $refresh_rate - $_ini->get('refresh_rate')) * 1000; ?>);
 
-    // Randomly add a data point every 500ms
+    //Randomly add a data point every 500ms
     var random = new TimeSeries();
-    //setInterval(function() {
-    //random.append(new Date().getTime(), Math.random() * 10000);
-    //}, 500);
+    setInterval(function() {
+	random.append(new Date().getTime(), Math.random() * 100);
+    }, 1000);
 
-    var memcached_get = new TimeSeries();
+    //var memcached_get = new TimeSeries();
     function updateGetChart(value) {
 	memcached_get.append(new Date().getTime(), value);
     }
 
+    memcached_get = new TimeSeries();
 
+    function memcachedTimeline() {
+	var chart = new SmoothieChart({
+	    millisPerPixel:87,
+	    grid:{
+		fillStyle:'rgba(0,0,0,0.63)',
+		strokeStyle:'rgba(119,119,119,0.48)',
+		millisPerLine: 8000,
+		verticalSections: 8,
+		borderVisible: false
+	    },
+	    timestampFormatter:SmoothieChart.timeFormatter
+	});
+	canvas = document.getElementById('chart');
 
-function createTimeline() {
-    var chart = new SmoothieChart();
-    //chart.addTimeSeries(random, {
-    //strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 4 });
-
-    chart.addTimeSeries(memcached_get, {
-strokeStyle: 'rgba(255, 255, 0, 1)', fillStyle: 'rgba(255, 255, 0, 0.2)', lineWidth: 4 });
-    //chart.streamTo(document.getElementById("chart"), 500);
-    chart.streamTo(document.getElementById("chart"), 500);
-}
-createTimeline();
+	//chart.addTimeSeries(random, {
+	    //strokeStyle: 'rgba(128, 255, 0, 1)',
+	    //fillStyle: 'rgba(128, 255, 0, 0.2)',
+	    //lineWidth: 4
+	//});
+	chart.addTimeSeries(memcached_get, {
+	    strokeStyle: 'rgba(0, 255, 128, 1)',
+	    fillStyle: 'rgba(0, 255, 128, 0.2)',
+	    lineWidth: 4
+	});
+	chart.streamTo(canvas, 1833);
+    }
+    memcachedTimeline();
 </script>
 
