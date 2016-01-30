@@ -19,7 +19,7 @@ Assuming your memcached instance is running on port 11211, everything should wor
 
 Example chart showing some memcached stats:
 
-[[https://raw.githubusercontent.com/kevin-jones/phpMemcachedAdmin/master/Public/Images/chart1.png]]
+![Memcached stats live chart](/Public/Images/chart1.png?raw=true)
 
 ## Credits
 
