@@ -1,5 +1,5 @@
     <div class="size-4" style="float:left;">
-        <div class="sub-header corner padding">Get <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Get <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left">Hits</span>
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="sub-header corner padding">Set <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Set <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left">Total</span>
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="sub-header corner padding">Delete <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Delete <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left">Hits</span>
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="sub-header corner padding">Cas <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Cas <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left">Hits</span>
@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <div class="sub-header corner padding">Increment <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Increment <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left">Hits</span>
@@ -88,7 +88,7 @@
             </div>
         </div>
 
-        <div class="sub-header corner padding">Decrement <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Decrement <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left">Hits</span>
@@ -106,7 +106,7 @@
             </div>
         </div>
         
-        <div class="sub-header corner padding">Touch <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Touch <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left">Hits</span>
@@ -124,7 +124,7 @@
             </div>
         </div>
 
-        <div class="sub-header corner padding">Flush <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Flush <span class="highlight">Stats</span></div>
         <div class="container corner padding" style="height:48px;">
             <div class="line">
                 <span class="left">Total</span>
@@ -147,7 +147,7 @@ if((isset($_GET['server'])) && ($_ini->server($_GET['server'])))
         </div>
 <?php
 } ?>
-        <div class="sub-header corner padding"><?php echo (isset($_GET['server'])) && ($_ini->server($_GET['server'])) ? 'Server' : 'Cluster'; ?> <span class="green">Stats</span></div>
+        <div class="sub-header corner padding"><?php echo (isset($_GET['server'])) && ($_ini->server($_GET['server'])) ? 'Server' : 'Cluster'; ?> <span class="highlight">Stats</span></div>
         <div class="container corner padding size-3cols">
 <?php
 # Viewing a single server
@@ -195,7 +195,7 @@ if((isset($_GET['server'])) && ($_ini->server($_GET['server'])))
 } ?>
         </div>
 
-        <div class="sub-header corner padding">Eviction &amp; Reclaimed <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Eviction &amp; Reclaimed <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left setting">Items Eviction</span>
@@ -228,7 +228,7 @@ if((isset($_GET['server'])) && ($_ini->server($_GET['server'])))
 # Viewing a server
 if((isset($_GET['server'])) && ($_ini->server($_GET['server'])))
 { ?>
-        <div class="sub-header corner padding">Server <span class="green">Configuration</span></div>
+        <div class="sub-header corner padding">Server <span class="highlight">Configuration</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left setting help" title="Internal name : accepting_conns&#013;Whether the server is accepting connection or not">Accepting Connections</span>
@@ -309,7 +309,7 @@ if((isset($_GET['server'])) && ($_ini->server($_GET['server'])))
 # Viewing a cluster
 elseif((isset($_GET['server'])) && ($cluster = $_ini->cluster($_GET['server'])))
 { ?>
-        <div class="sub-header corner padding">Cluster <?php echo $_GET['server']; ?> <span class="green">Servers List</span></div>
+        <div class="sub-header corner padding">Cluster <?php echo $_GET['server']; ?> <span class="highlight">Servers List</span></div>
         <div class="container corner padding">
 <?php
     # Displaying first 8 servers
@@ -318,7 +318,7 @@ elseif((isset($_GET['server'])) && ($cluster = $_ini->cluster($_GET['server'])))
     { ?>
             <div class="line server" style="<?php if($displayed > 8) { echo 'display:none;'; } else { $displayed++; } ?>">
                 <span class="left setting"><?php echo (strlen($name) > 27) ? substr($name, 0, 27) . ' [...]' : $name; ?></span>
-                <span class="right" style="font-weight:bold;"><a href="index.php?server=<?php echo $name; ?>" class="green">See Server Stats</a></span>
+                <span class="right" style="font-weight:bold;"><a href="index.php?server=<?php echo $name; ?>" class="highlight">See Server Stats</a></span>
                 <div class="line" style="margin-left:5px;">
                     <?php echo ($status[$name] != '') ? 'Version ' . $status[$name] . ', Uptime : ' . Library_Data_Analysis::uptime($uptime[$name]) : 'Server did not respond'; ?>
                 </div>
@@ -332,7 +332,7 @@ elseif((isset($_GET['server'])) && ($cluster = $_ini->cluster($_GET['server'])))
             <div class="line more">
             	<span class="left" style="font-weight:bold;">
             	<?php echo $remaining; ?> Server<?php echo ($remaining > 1) ? 's are' : ' is'; ?> not displayed</span>
-            	<span class="right" style="font-weight:bold;"><a href="#" onclick="javascript:show('server');javascript:hide('more');" class="green">See all <?php echo count($cluster); ?> Servers</a></span>
+            	<span class="right" style="font-weight:bold;"><a href="#" onclick="javascript:show('server');javascript:hide('more');" class="highlight">See all <?php echo count($cluster); ?> Servers</a></span>
             </div>
 <?php
     } ?>
@@ -354,7 +354,7 @@ elseif((isset($_GET['server'])) && ($cluster = $_ini->cluster($_GET['server'])))
     $free_percent = sprintf('%.1f', ($stats['limit_maxbytes'] - $slabs['total_malloced']) / $stats['limit_maxbytes'] * 100);
 ?>
     <div class="size-4" style="float:left; padding-left:9px;clear:right;">
-        <div class="sub-header corner padding">Cache Size <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Cache Size <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left">Used</span>
@@ -375,7 +375,7 @@ elseif((isset($_GET['server'])) && ($cluster = $_ini->cluster($_GET['server'])))
             </div>-->
          </div>
 
-        <div class="sub-header corner padding">Cache Size <span class="green">Graphic</span></div>
+        <div class="sub-header corner padding">Cache Size <span class="highlight">Graphic</span></div>
         <div class="container corner padding">
             <div class="line">
                 <img src="http://chart.apis.google.com/chart?chf=bg,s,ebebeb&amp;chs=281x225&amp;cht=p&amp;chco=b5463f|2a707b|ffffff&amp;chd=t:<?php echo $wasted_percent; ?>,<?php echo $used_percent; ?>,<?php echo $free_percent; ?>&amp;chdl=Wasted%20<?php echo $wasted_percent; ?>%|Used%20<?php echo $used_percent; ?>%|Free%20<?php echo $free_percent; ?>%&amp;chdlp=b" alt="Cache Size by GoogleCharts" width="281" height="225"/>
@@ -385,7 +385,7 @@ elseif((isset($_GET['server'])) && ($cluster = $_ini->cluster($_GET['server'])))
 # Viewing a single server
 if((isset($_GET['server'])) && ($_ini->server($_GET['server'])))
 { ?>
-        <div class="sub-header corner padding">Hash Table <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Hash Table <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left help" title="Internal name : hash_power_level&#013;Current size multiplier for hash table">Power Level</span>
@@ -405,7 +405,7 @@ if((isset($_GET['server'])) && ($_ini->server($_GET['server'])))
 # Viewing a cluster
 elseif((isset($_GET['server'])) && ($cluster = $_ini->cluster($_GET['server'])))
 { ?>       
-        <div class="sub-header corner padding">Hash Table <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Hash Table <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left">Size</span>
@@ -414,7 +414,7 @@ elseif((isset($_GET['server'])) && ($cluster = $_ini->cluster($_GET['server'])))
          </div>
 <?php
 } ?>
-        <div class="sub-header corner padding">Slab <span class="green">Reassign & Automove</span></div>
+        <div class="sub-header corner padding">Slab <span class="highlight">Reassign & Automove</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left help" title="Internal name : slabs_moved&#013;Indicates how many pages have been successfully moved">Slabs Moved</span>
@@ -426,14 +426,14 @@ elseif((isset($_GET['server'])) && ($cluster = $_ini->cluster($_GET['server'])))
             </div>
          </div>
          
-        <div class="sub-header corner padding">Hit &amp; Miss Rate <span class="green">Graphic</span></div>
+        <div class="sub-header corner padding">Hit &amp; Miss Rate <span class="highlight">Graphic</span></div>
         <div class="container corner padding">
             <div class="line">
             <img src="http://chart.apis.google.com/chart?cht=bvg&amp;chd=t:<?php echo $stats['get_hits_percent']; ?>,<?php echo $stats['get_misses_percent']; ?>&amp;chs=280x145&amp;chl=Hit|Miss&amp;chf=bg,s,ebebeb&amp;chco=2a707b|b5463f&amp;chxt=y&amp;chbh=a&amp;chm=N,000000,0,-1,11" alt="Cache Hit &amp; Miss Rate by GoogleChart" width="280" height="145"/>
             </div>
         </div>
 
-        <div class="sub-header corner padding">Network <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Network <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left">Bytes Read</span>

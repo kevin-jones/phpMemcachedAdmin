@@ -21,7 +21,7 @@ if((isset($stats)) && (($stats === false) || ($stats == array())))
         <?php echo Library_Data_Error::last(); ?>
         <br/>
         <br/>
-        Please check above error message, your <a href="configure.php" class="green">configuration</a> or your server status and retry
+        Please check above error message, your <a href="configure.php" class="highlight">configuration</a> or your server status and retry
     </div>
 <?php
 }
@@ -35,7 +35,7 @@ elseif((isset($slabs)) && ($slabs === false))
     <div class="container corner full-size padding">
         <span class="left">Error message</span>
         <br/>
-        Maybe this server is not used, check your <a href="configure.php" class="green">configuration</a> or your server status and retry
+        Maybe this server is not used, check your <a href="configure.php" class="highlight">configuration</a> or your server status and retry
     </div>
 <?php
 }
@@ -52,7 +52,7 @@ elseif((isset($items)) && ($items === false))
         This slab is allocated, but is empty
         <br/>
         <br/>
-        Go back to <a href="?server=<?php echo $_GET['server']; ?>&amp;show=slabs" class="green">Server Slabs</a>
+        Go back to <a href="?server=<?php echo $_GET['server']; ?>&amp;show=slabs" class="highlight">Server Slabs</a>
     </div>
 <?php
 }

@@ -279,8 +279,8 @@ function ajaxDone(target) {
 		if (req.status == 200 || req.status == 304) {
 			var ajaxObj = JSON.parse(req.responseText);
 			results = ajaxObj.html;
-			console.log(ajaxObj.stats['127.0.0.1:11211'].get_rate);
 			updateGetChart(ajaxObj.stats['127.0.0.1:11211'].get_rate);
+			updateSetChart(ajaxObj.stats['127.0.0.1:11211'].set_rate);
 			document.getElementById(target).innerHTML = results;
 		} else {
 			document.getElementById(target).innerHTML = "Loading stats error : "

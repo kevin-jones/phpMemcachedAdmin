@@ -155,7 +155,7 @@ switch($request)
         {
             # Analysis
             $stats = Library_Data_Analysis::stats($stats);
-            include 'View/Stats/Stats.tpl';
+            include 'View/Stats/Home.tpl';
         }
         # Stats are not well formed
         else

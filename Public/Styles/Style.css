@@ -1,6 +1,6 @@
 body {
 	background-color: #FEFEFE;
-	font-family: Verdana,Tahoma,"Segoe UI", Arial;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 0.8em;
 	margin-top: 10px;
 }
@@ -11,7 +11,7 @@ a {
 }
 
 a:hover {
-	color: #A00
+	color: #ccc;
 }
 
 input,select,textarea {
@@ -123,7 +123,7 @@ hr {
     border-width: 1px;
     border-style: solid;
     border-color: #9c3c36;
-	background: url("../Images/b5463f.png") repeat-x scroll 50% 50% #B5463F;
+	background: #222;
 	font-weight: bold;
 	color: #fff;
 	clear: both
@@ -133,7 +133,7 @@ hr {
 	border-width: 1px;
     border-style: solid;
     border-color: #514845;
-	background: url("../Images/635855.png") repeat-x scroll 50% 50% #635855;
+	background: #999;
 	font-weight: bold;
 	color: #fff;
 	clear: both;
@@ -225,12 +225,35 @@ hr {
 	color: #EEE
 }
 
-.green {
-	color: #40aaba
+.highlight {
+	color: #eee;
 }
 
 .red {
 	background: #b5463f;
 	color: #fff;
 	font-weight: bold
+}
+
+.chart-legend-dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+}
+
+.chart-legend {
+    float:right;
+}
+
+.chart-legend-item {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.chart-legend-dot.get {
+    background: rgb(0, 255, 128);
+}
+
+.chart-legend-dot.set {
+    background: rgb(255, 0, 0);
 }
