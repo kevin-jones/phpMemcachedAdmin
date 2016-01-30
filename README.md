@@ -11,6 +11,10 @@ phpMemcachedAdmin is a tool that allows you to monitor a memcached server very e
 
 So we added live charts that stream memcached stats onto a everlasting, smooth HTML5-powered line graph.
 
+## How to see the live charts
+
+Assuming your memcached instance is running on port 11211, everything should work straight out of the box. Simple clone this repo then go to /stats.php in your browser.
+
 ## Example chart
 
 Example chart showing some memcached stats:
