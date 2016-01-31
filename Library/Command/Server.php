@@ -495,4 +495,28 @@ class Library_Command_Server implements Library_Command_Interface
         }
         return self::$_log;
     }
+
+    function mysql_stats()
+    {
+        $db = mysqli_connect(
+            self::$_ini->get('mysql_host'),
+            self::$_ini->get('mysql_user'),
+            self::$_ini->get('mysql_pass'),
+            self::$_ini->get('mysql_db')
+        );
+
+        if (!$db) {
+            echo "Error: Unable to connect to MySQL." . PHP_EOL;
+            echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+            echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+            exit;
+        }
+
+        $q = $db->query("SHOW GLOBAL STATUS WHERE Variable_name IN ('Com_select', 'Com_insert', 'Com_update');");
+        while($r = $q->fetch_assoc()) {
+            $mysql_stats[$r['Variable_name']] = $r['Value'];
+        }
+
+        return $mysql_stats;
+    }
 }

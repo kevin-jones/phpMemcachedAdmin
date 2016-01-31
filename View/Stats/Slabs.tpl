@@ -1,5 +1,5 @@
         <div class="size-4" style="float:left;">
-        <div class="sub-header corner padding">Slabs <span class="green">Stats</span></div>
+        <div class="sub-header corner padding">Slabs <span class="highlight">Stats</span></div>
         <div class="container corner padding">
             <div class="line">
                 <span class="left">Slabs Used</span>
@@ -26,7 +26,7 @@
     <div class="size-1" style="float:left;padding-left:9px;">
         <div class="container corner" style="padding:9px;">
                 For more informations about memcached slabs stats, see memcached protocol
-                <a href="http://github.com/memcached/memcached/blob/master/doc/protocol.txt#L470" target="_blank"><span class="green">here</span></a>
+                <a href="http://github.com/memcached/memcached/blob/master/doc/protocol.txt#L470" target="_blank"><span class="highlight">here</span></a>
         </div>
     </div>
 
@@ -52,7 +52,7 @@ foreach($slabs as $id => $slab)
         }
 ?>
         <td <?php if($actualSlab > 0) { echo 'style="padding-left:9px;"'; } ?> valign="top">
-            <div class="sub-header corner padding size-5">Slab <?php echo $id; ?> <span class="green">Stats</span>
+            <div class="sub-header corner padding size-5">Slab <?php echo $id; ?> <span class="highlight">Stats</span>
                 <span style="float:right;"><a href="?server=<?php echo $_GET['server']; ?>&amp;show=items&amp;slab=<?php echo $id; ?>">See Slab Items</a></span>
             </div>
             <div class="container corner padding size-5">

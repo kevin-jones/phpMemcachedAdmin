@@ -253,7 +253,15 @@ hr {
 .chart-legend-dot.get {
     background: rgb(0, 255, 128);
 }
-
 .chart-legend-dot.set {
     background: rgb(255, 0, 0);
+}
+.chart-legend-dot.select {
+    background: #013ADF;
+}
+.chart-legend-dot.insert {
+    background: #DF0174;
+}
+.chart-legend-dot.update {
+    background: #9A2EFE; 
 }

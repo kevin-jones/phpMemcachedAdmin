@@ -4,12 +4,24 @@
 </div>
 
 <div style="margin:15px 0">
-<canvas id="chart" width="996" height="200"></canvas>
+<h2>Memcached</h2>
+<canvas id="chart_memcached" width="996" height="200"></canvas>
 </div>
 
 <div class="chart-legend">
     <div class="chart-legend-item"><div class="chart-legend-dot get"></div> Get/s</div>
     <div class="chart-legend-item"><div class="chart-legend-dot set"></div> Set/s</div>
+</div>
+
+<div style="margin:15px 0">
+<h2>MySQL</h2>
+<canvas id="chart_mysql" width="996" height="200"></canvas>
+</div>
+
+<div class="chart-legend">
+    <div class="chart-legend-item"><div class="chart-legend-dot select"></div> Select/s</div>
+    <div class="chart-legend-item"><div class="chart-legend-dot insert"></div> Insert/s</div>
+    <div class="chart-legend-item"><div class="chart-legend-dot update"></div> Update/s</div>
 </div>
 
 <div style="float:left;">
@@ -92,13 +104,26 @@ Global hit percent on this server : get_hits / (get_hits + get_misses)
     function updateSetChart(value) {
         memcached_set.append(new Date().getTime(), value);
     }
+    function updateMysqlSelectChart(value) {
+        mysql_select.append(new Date().getTime(), value);
+    }
+    function updateMysqlInsertChart(value) {
+        mysql_insert.append(new Date().getTime(), value);
+    }
+    function updateMysqlUpdateChart(value) {
+        mysql_update.append(new Date().getTime(), value);
+    }
+
     memcached_get = new TimeSeries();
     memcached_set = new TimeSeries();
+    mysql_select = new TimeSeries();
+    mysql_insert = new TimeSeries();
+    mysql_update = new TimeSeries();
 
-    function memcachedTimeline() {
-        var chart = new SmoothieChart({
+    function timeline() {
+        var memcached_chart = new SmoothieChart({
             millisPerPixel:87,
-            maxValue: 2000,
+            maxValue: 2500,
             minValue: 0,
             grid:{
                 fillStyle:'rgba(0,0,0,0.63)',
@@ -109,25 +134,56 @@ Global hit percent on this server : get_hits / (get_hits + get_misses)
             },
             timestampFormatter:SmoothieChart.timeFormatter
         });
-        canvas = document.getElementById('chart');
+        var mysql_chart = new SmoothieChart({
+            millisPerPixel:87,
+            maxValue: 200,
+            minValue: 0,
+            grid:{
+                fillStyle:'rgba(0,0,0,0.63)',
+                strokeStyle:'rgba(119,119,119,0.48)',
+                millisPerLine: 8000,
+                verticalSections: 8,
+                borderVisible: false
+            },
+            timestampFormatter:SmoothieChart.timeFormatter
+        });
+        memcached_canvas = document.getElementById('chart_memcached');
+        mysql_canvas = document.getElementById('chart_mysql');
 
         //chart.addTimeSeries(random, {
             //strokeStyle: 'rgba(128, 255, 0, 1)',
             //fillStyle: 'rgba(128, 255, 0, 0.2)',
             //lineWidth: 4
         //});
-        chart.addTimeSeries(memcached_get, {
+        memcached_chart.addTimeSeries(memcached_get, {
             strokeStyle: 'rgba(0, 255, 128, 1)',
             fillStyle: 'rgba(0, 255, 128, 0.2)',
             lineWidth: 4
         });
-        chart.addTimeSeries(memcached_set, {
+        memcached_chart.addTimeSeries(memcached_set, {
             strokeStyle: 'rgba(255, 0, 0, 1)',
             fillStyle: 'rgba(255, 0, 0, 0.2)',
             lineWidth: 4
         });
-        chart.streamTo(canvas, 1833);
+        mysql_chart.addTimeSeries(mysql_select, {
+            strokeStyle: '#013ADF',
+            fillStyle: 'rgba(1, 58, 223, 0.2)',
+            lineWidth: 4
+        });
+        mysql_chart.addTimeSeries(mysql_insert, {
+            strokeStyle: '#DF0174',
+            fillStyle: 'rgba(223,1,116, 0.2)',
+            lineWidth: 4
+        });
+        mysql_chart.addTimeSeries(mysql_update, {
+            strokeStyle: '#9A2EFE',
+            fillStyle: 'rgba(154,46,254, 0.2)',
+            lineWidth: 4
+        });
+
+        memcached_chart.streamTo(memcached_canvas, 1833);
+        mysql_chart.streamTo(mysql_canvas, 1833);
     }
 
-    memcachedTimeline();
+    timeline();
 </script>

@@ -1,5 +1,6 @@
-# phpMemcachedAdmin
-Fork of phpMemcachedAdmin with HTML5 charts enabling a live stream of memcached activity
+# Memcached & MySQL Live Stats
+
+Fork of phpMemcachedAdmin with HTML5 charts enabling a live stream of memcached activity. We have also added MySQL stats too so the two systems can be analysed in parallel.
 
 ## History
 
@@ -22,6 +23,8 @@ Example chart showing some memcached stats:
 ![Memcached stats live chart](/Public/Images/chart1.png?raw=true)
 
 ## Credits
+
+Based on the original phpMemcachedAdmin by Cyrille Mahieux.
 
 For the charts we use the amazing Smoothie Charts https://github.com/joewalnes/smoothie/
 

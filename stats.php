@@ -108,6 +108,11 @@ switch($request)
 
             # Calculating query time length
             $actual[$name]['query_time'] = max((microtime(true) - $time) * 1000, 1);
+
+            # Get MySQL Stats
+            $mysql_time = microtime(true);
+            $actual[$name]['mysql'] = Library_Command_Factory::instance('stats_api')->mysql_stats();
+            $actual[$name]['mysql_query_time'] = max((microtime(true) - $time) * 1000, 1);
         }
 
         # Analysing stats

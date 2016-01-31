@@ -80,9 +80,20 @@ class Library_Data_Analysis
         # Diff for each key
         foreach($stats as $key => $value)
         {
-            if(isset($array[$key]))
+            if(isset($array[$key]) && $key != 'mysql')
             {
                 $stats[$key] = $value - $array[$key];
+            }
+            elseif($key == 'mysql')
+            {
+                if(isset($array[$key]))
+                {
+                    foreach($value as $mysql_key => $mysql_value) {
+                        if(isset($array[$key][$mysql_key])) {
+                            $stats[$key][$mysql_key] = $mysql_value - $array[$key][$mysql_key];
+                        }
+                    }
+                }
             }
         }
 
@@ -311,7 +322,7 @@ class Library_Data_Analysis
      * @param Integer $value Value to resize
      *
      * @return String
-     */
+  Cyrille Mahieux   */
     public static function valueResize($value)
     {
         # Unit list

@@ -1,6 +1,6 @@
 <?php
 # Constants declaration
-define('CURRENT_VERSION', '1.3.1');
+define('CURRENT_VERSION', '1.4');
 
 # PHP < 5.3 Compatibility
 if(!defined('ENT_IGNORE'))
